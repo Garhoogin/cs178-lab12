@@ -24,11 +24,22 @@ def hello(name):
     return render_template('hello.html', name=name)
 
 
-# ============================================================
-#  YOUR ROUTES GO BELOW THIS LINE
-#  Each exercise asks you to add a new @app.route here
-# ============================================================
+def count_vowels(s):
+    vowel_str = "aeiou"
+    num_vowel = 0
+    for c in s:
+        if c in vowel_str:
+            num_vowel += 1
+    return num_vowel
 
+# ============================================================
+#  ROUTE 3 - Analze word with a URL variable
+#  Visit: http://declan-ec2.garhoogin.com/analyze/Word
+# ============================================================
+@app.route('/analyze/<word>')
+def analyze(word):
+    return "<pre>You entered:" + word + "<br/>Characters: " + str(len(word)) +
+        "<br/>Vowels: " + str(count_vowels(word)) + "<br/>Reversed: " + word[::-1] + "</pre>"
 
 
 
