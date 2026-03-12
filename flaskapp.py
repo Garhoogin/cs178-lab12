@@ -38,8 +38,10 @@ def count_vowels(s):
 # ============================================================
 @app.route('/analyze/<word>')
 def analyze(word):
-    return "<pre>You entered:" + word + "<br/>Characters: " + str(len(word)) + \
-        "<br/>Vowels: " + str(count_vowels(word)) + "<br/>Reversed: " + word[::-1] + "</pre>"
+    # return "<pre>You entered:" + word + "<br/>Characters: " + str(len(word)) + \
+    #     "<br/>Vowels: " + str(count_vowels(word)) + "<br/>Reversed: " + word[::-1] + "</pre>"
+    return render_template('analyze.html', word=word, num_chars=len(word),
+        num_vowels=count_vowels(word), word_rev=word[::-1])
 
 
 
